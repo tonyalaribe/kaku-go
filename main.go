@@ -152,8 +152,8 @@ func main() {
 	s3bucket := s.Bucket(AWSBucket)
 
 	rediscli := redis.NewClient(&redis.Options{
-		Addr:    REDISADDR,
-		Network: "redis",
+		Addr: REDISADDR,
+		//Network: "redis",
 	})
 	pong, err := rediscli.Ping().Result()
 	log.Println(pong, err)
