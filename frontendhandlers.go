@@ -88,7 +88,7 @@ func (c *appContext) searchResultPage(w http.ResponseWriter, r *http.Request) {
 	//log.Println(user)
 
 	r.ParseForm()
-	l := strings.Join(r.Form["l"], "")
+	l := strings.Split(strings.ToLower(strings.Join(r.Form["l"], "")), ",")[0]
 	s := strings.Join(r.Form["s"], "")
 	b := strings.Join(r.Form["b"], "")
 
