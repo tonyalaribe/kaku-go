@@ -52,9 +52,9 @@
       <div class="container">
         <img src="/assets/images/KakuLogo.png" />
         <div style="display:inline-block;" class="pull-right">
-          <a>Home </a>
-          <a>About</a>
-          <a>Blog </a>
+          <a href="/">Home </a>
+<!--          <a>About</a>
+    <a>Blog </a>-->
           {{ if ne .User.Name ""}}
           <div class="btn-group head-dropdown">
             <button type="button" class="btn  dropdown-toggle " data-toggle="dropdown">
@@ -124,8 +124,8 @@
           <ul>
             
           <li ><a class="active h" href="/">Home </a></li>
-          <li ><a class="active h" href="/">About</a></li>
-          <li ><a class="active h" href="/">Blog </a></li>
+          <!--<li ><a class="active h" href="/">About</a></li>
+              <li ><a class="active h" href="/">Blog </a></li>-->
           {{ if ne .User.Name ""}}
           <div class="btn-group head-dropdown">
             <button type="button" class="btn btn-lg  dropdown-toggle " data-toggle="dropdown">
