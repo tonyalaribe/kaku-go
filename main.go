@@ -53,8 +53,11 @@ func renderTemplate(w http.ResponseWriter, tmpl string, q interface{}) {
 	}
 }
 
-func checks() (REDISADDR, MONGOSERVER, MONGODB string, Public []byte, Private []byte, FBURL, FBClientID, FBClientSecret, RootURL, AWSBucket string) {
-	REDISADDR = os.Getenv("REDISCLOUD_URL")
+func checks() (REDISADDR, REDISPW, MONGOSERVER, MONGODB string, Public []byte, Private []byte, FBURL, FBClientID, FBClientSecret, RootURL, AWSBucket string) {
+	REDISADDR = os.Getenv("REDISURL")
+
+	REDISPW = os.Getenv("REDISPW")
+
 	if REDISADDR == "" {
 		log.Println("No mongo server address set, resulting to default address")
 		REDISADDR = "localhost:6379"
@@ -133,7 +136,7 @@ func init() {
 
 func main() {
 
-	REDISADDR, MONGOSERVER, MONGODB, Public, Private, FBURL, FBClientID, FBClientSecret, RootURL, AWSBucket := checks()
+	REDISADDR, REDISPW, MONGOSERVER, MONGODB, Public, Private, FBURL, FBClientID, FBClientSecret, RootURL, AWSBucket := checks()
 	log.Println(REDISADDR)
 	session, err := mgo.Dial(MONGOSERVER)
 	if err != nil {
@@ -152,8 +155,9 @@ func main() {
 	s3bucket := s.Bucket(AWSBucket)
 
 	rediscli := redis.NewClient(&redis.Options{
-		Addr: REDISADDR,
-		//Network: "redis",
+		Addr:     REDISADDR,
+		Network:  "tcp",
+		Password: REDISPW,
 	})
 	pong, err := rediscli.Ping().Result()
 	log.Println(pong, err)
