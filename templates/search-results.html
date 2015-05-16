@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="">
+  {{ template "head" .}}
+  <body class="search-results">
+    
+  {{template "navandsearch" . }}
+    
+    <br/>
+    <div class="container search-heading">
+      <h1>Found {{.Count}} results around {{.Location}}</h1>
+    </div>
+    
+
+
+    <section class="container" >
+        <br/>
+        
+
+        <div class="left-side  col-sm-9" id="search-view">
+            <div class="search-items col-sm-6 col-md-4 ">
+                   
+            </div>
+            <div class="search-items col-sm-6 col-md-4 ">
+                   
+            </div>
+            <div class="search-items col-sm-6 col-md-4  ">
+                   
+            </div>
+            <div class="search-items col-sm-6 col-md-4  ">
+                   
+            </div>
+            <div style="clear:both"></div>
+            <br/>
+                <!-- some controls -->
+                <div class="btn btn-more"> Load more
+                </div>
+                <div class="state no-more-state">
+                
+                </div>
+                <div class="state load-state">
+                  <div class="sk-spinner sk-spinner-rotating-plane"></div>
+                </div>
+                     
+              <script type="text/template" id="cardTemplate">
+              
+          <div class="card">
+              
+              <div style="padding:0;"  class="flexed-group">
+                <% for(var i in Images) { %>
+                <a  data-src="<%= Images[i].Full %>">
+                    <img src="<%= Images[i].Thumb %>" class="img-responsive" style="height:100px;border-right:1px solid #fff;"/>
+                </a>
+                <% } %>
+              
+              </div>
+              <div style="min-height:150px">
+               <a href="/place/<%= Slug %>"><h3 ><%= Name %></h3></a>
+               <p><%= Address %>,<%= State %></p>
+               <p><strong>Services:</strong> <% for(var s in Service) { %>
+                     
+                         <span><%= Service[s] %>,</span>
+                     <% } %></p>
+               </div>
+                <div>
+                  <img src="/assets/images/x<%= Rating %>.svg">
+                  <span><strong><%= ReviewsCount %></strong> reviews</span>&nbsp;
+                  <span><strong>₦<%= Budget %></strong></span>
+                </div>
+               
+                </div>
+            
+              </div>
+              <br/>
+              </script>
+                        
+        </div>
+        
+        <div class="col-sm-3">
+          <a href="#">
+            <img src="/assets/images/ad.png">
+          </a>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+    <br/>
+    <div class="container">
+      <img src="/assets/images/long-ad.png" class="img-responsive">
+    </div>
+    <div style="clear:both"></div>
+    <br/>
+    <footer class="foot " >
+    <div class="container">
+      <div class="footer-nav">
+        <a>About Us</a>
+        <a>Career</a>
+        <a >Blog</a>
+        <a >Privacy Policy</a>
+        <a >Terms and Conditions</a>
+      </div>
+      
+      <div class="footer-links">
+        Quick Links to Areas within Lagos: Alagbado. Amuwo Odofin. Ajegunle. Ajah. Bariga. Lekki Phase 1.
+					    Alimosho 	.
+              Ajeromi-Ifelodun 	.
+             	Kosofe 	.
+             	Mushin .
+             	Oshodi-Isolo .
+             	Ojo 	.
+             	Ikorodu .
+             	Surulere .
+            	Agege 	.
+             	Ifako-Ijaye.
+             	Shomolu .
+             	Amuwo-Odofin .
+             	Lagos Mainland .
+             	Ikeja 	.
+             	Eti-Osa 	.
+             	Badagry .
+             	Apapa 	.
+             	Lagos Island .
+             	Epe 	.
+             	Ibeju-Lekki.
+      </div>
+      <div class="footer-copyright">
+        <small>Copyright (c) 2015, kaku.com.ng. All rights reserved.</small>
+        <br/>
+      </div>
+    </div>
+    </footer>
+    
+    
+    
+    <script src="assets/scripts/main.min.js"></script>
+    
+
+
+    <script type="text/javascript">
+              //initiating jQuery
+              jQuery(function($) {
+                $(document).ready( function() {
+                  //enabling stickUp on the '.navbar-wrapper' class
+                  $('.stick').stickUp();
+                });
+              });
+
+
+          
+              $('.flexed-group').lightGallery({
+                      showThumbByDefault:true,
+                      addClass:'showThumbByDefault'
+                  });
+            
+          $(function() {
+             
+              //configuration
+              var options = {
+                  columnsSelector: ".search-items",
+                  itemTemplateSelector: "#cardTemplate",
+                  itemClasses: "pod",
+                  dataUrl: "{{.URL}}",
+              };
+      
+              //BackboneJs model and Viewer
+              var scrollModel = new ScrollModel({options: options});
+              var view = new ScrollView({el: $("#search-view"), model: scrollModel, options: options});
+              
+              if (view.onShow) {
+                view.onShow();
+              }
+      
+          })
+      </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+ {{template "foot"}}
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>

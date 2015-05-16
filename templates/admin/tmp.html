@@ -1,0 +1,112 @@
+{{ define "sidebar"}}
+
+<!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="{{.User.Image}}" class="img-circle" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+              <p>{{.User.Name}}</p>
+
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+          </div>
+          <!-- search form -->
+          <form action="/admin/places/search" method="get" class="sidebar-form">
+            <input type="text" name="l" class="form-control" placeholder="Location..."/>
+            <div class="input-group">
+              <input type="text" name="s" class="form-control" placeholder="Search..."/>
+              <span class="input-group-btn">
+                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+          <!-- /.search form -->
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="active ">
+              <a href="/admin">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+              </a>
+            </li>
+            
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-files-o"></i> <span>Places</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class=""><a href="/admin/places/new"><i class="fa fa-circle-o text-success"></i> <span>New</span>
+                      <small class="label pull-right bg-green">50</small></a>
+                </li>
+                <li class=""><a href="/admin/places/all"><i class="fa fa-circle-o text-warning"></i> <span>All</span>
+                      <small class="label pull-right bg-red">50</small></a>
+                </li>
+                <li class=""><a href="/admin/places/ua"><i class="fa fa-circle-o text-danger"></i> <span>Unapproved</span>
+                      <small class="label pull-right bg-yellow">50</small></a>
+                </li>
+                <li class=""><a href="/admin/places/featured"><i class="fa fa-circle-o text-info"></i> <span>Featured</span>
+                      <small class="label pull-right bg-blue">50</small></a>
+                </li>
+              </ul>
+            </li>
+         
+            
+
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+        
+{{end}}
+
+
+{{ define "header"}}
+
+
+      <header class="main-header">
+        <!-- Logo -->
+        <a href="/admin/" class="logo"><strong>kaku</strong>.com.ng</a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="{{.User.Image}}" class="user-image" alt="User Image"/>
+                  <span class="hidden-xs">{{.User.Name}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <img src="{{.User.Image}}" class="img-circle" alt="User Image" />
+                    <p>
+                      {{.User.Name}}
+                    </p>
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      
+      
+
+{{end}}

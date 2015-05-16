@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AdminLTE 2 | Dashboard</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- FontAwesome 4.3.0 -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons 2.0.0 -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+         <link href="/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="skin-blue">
+    <div class="wrapper">
+      
+      {{ template "header" .}}
+      
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+       
+        {{ template "sidebar" .}}
+        
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Dashboard
+            <small>Control panel</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+           <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>150</h3>
+                  <p>New Orders</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <p>Bounce Rate</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>44</h3>
+                  <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3>65</h3>
+                  <p>Unique Visitors</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+          </div><!-- /.row -->
+          
+          <!-- Main row -->
+          <div class="row">
+            
+            
+              <div class="col-md-12">
+                <div class="box">
+                  <div class="box-header with-border">
+                      <h3 class="box-title">{{.Place.Name}}</h3>
+                  
+                </div><!-- /.box-header -->
+                <form class="box-body" role="form" enctype="multipart/form-data" method="post" action="" >
+              
+                  <div class="form-group col-md-12">
+                      <label for="name" class="sr-only"> Name </label>
+                    <input type="TEXT" class="form-control "
+                                       value="{{.Place.Name}}"        placeholder="Name"  id="name"
+                                                                     name="name"/>
+                </div>
+                 <div class="form-group col-md-2 ll">
+                    <label for="location" class="sr-only"> Location </label>
+                    <input type="TEXT" class="form-control typeahead" value="{{.Place.Location}}"
+                                       placeholder="Location. ex 'city, state' "
+                                       id="location" name="location" />
+                </div>
+                <div class="form-group col-md-2 state">
+                    <label for="state" class="sr-only"> Location </label>
+                    <input type="TEXT" class="form-control typeahead" value="{{.Place.State}}"
+                                                                      placeholder="State eg. Lagos, Calabar"
+                                       id="state" name="state" />
+                </div>
+                <div class="form-group col-md-4 query">
+                    <label for="service" class="sr-only"> Service </label>
+                    <input type="TEXT" class="form-control typeahead"
+                                       placeholder="Services. ex 'Bar,Restaurant,Diner' " id="service"
+                                                                name="service"
+                                                                />
+                </div>
+                <div class="form-group col-md-4 budget">
+                    <label class="sr-only" for="budget">Optimal Budget</label>
+                    <input type="TEXT" class="form-control typeahead " value="{{.Place.Budget}}"
+                                       placeholder="Optimal Budget ex 5000"
+                                       id="budget" name="budget" />
+                </div>
+      
+            
+                 <div class="">
+                   <div class="form-group col-md-12">
+                    <label for="images" class="" align="center">Images of the
+                        Place  </label>
+                    <br/>
+                    <input
+                                  multiple
+                                  type="file"
+                                  class="multi with-preview"
+                                  name="images"
+                                  id="images"
+                                  maxlength="10"
+                                />
+                    </div>
+    
+                    <div class="form-group col-md-12">
+                        <label for="overview" class="sr-only">Overview</label>
+                        <textarea id="overview" name="overview" class="form-control nobr "
+                                                placeholder="Overview" rows="8"
+                                                                       >{{.Place.Overview}}</textarea>
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="address" class="sr-only">Address</label>
+                        <input type="TEXT" id="address" name="address"
+                        value="{{.Place.Address}}" class="form-control " placeholder="Address. ex '123 ABC Road' "/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="phone" class="sr-only">Phone No. </label>
+                        <input type="TEXT" id="phone" name="phone"
+                      value="{{.Place.Phone}}"  class="form-control " placeholder="Phone No. ex 08012345678"
+                                              />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="working-hours" class="sr-only">Working Hours</label>
+                        <input type="TEXT" placeholder="Working Hours. ex 'Mon-Fri:6am-9pm'" value="{{.Place.WorkingHours}}"id="working-hours" name="working-hours" class="form-control"  />
+                    </div>
+  
+                  
+                    <div style="clear:both"></div>
+                    <input class="btn  btn-lg btn-info blue-btn" type="submit" value="Submit">
+                  
+                  
+                </div>
+
+                </form>
+                
+                <div class="box-footer">
+                  {{ range .Place.Images }}
+                  
+                    <a class="fancybox" style="width:100px;height:100px; display:inline-block;"
+                       rel="group" href="{{ .Full }}">
+                      <img src="{{.Thumb}}" style="width:100px;height:100px;" class="img-responsive ">
+                    </a>
+                  
+                  {{end}}
+                  
+                </div>
+                </div>
+              </div>
+            
+
+          </div><!-- /.row (main row) -->
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 0.1
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://www.kaku.com.ng">Kaku</a>.</strong> All rights reserved.
+      </footer>
+    </div><!-- ./wrapper -->
+
+    <!-- jQuery 2.1.3 -->
+    <script src="/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- jQuery UI 1.11.2 -->
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    
+<script src="/dist/js/jquery.MultiFile.js" type="text/javascript"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/app.min.js" type="text/javascript"></script>
+
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="/dist/js/demo.js" type="text/javascript"></script>
+  </body>
+</html>

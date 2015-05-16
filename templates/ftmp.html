@@ -1,0 +1,166 @@
+{{ define "head"}}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kaku.com.ng</title>
+
+    <!-- Add to homescreen -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Fallback to homescreen for Chrome <39 on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Starter Kit">
+    <link rel="icon" sizes="192x192" href="/images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <meta name="theme-color" content="#3372DF">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+      <style type="text/css">
+    /*
+ *  Usage:
+ *
+ *    <div class="sk-spinner sk-spinner-rotating-plane"></div>
+ *
+ */
+
+  </style>
+  </head>
+{{end}}
+
+
+{{ define "navandsearch"}}
+    <div class="main-nav ">
+      <div class="container">
+        <img src="/assets/images/KakuLogo.png" />
+        <div style="display:inline-block;" class="pull-right">
+          <a>Home </a>
+          <a>About</a>
+          <a>Blog </a>
+          {{ if ne .User.Name ""}}
+          <div class="btn-group head-dropdown">
+            <button type="button" class="btn  dropdown-toggle " data-toggle="dropdown">
+            <img src="{{.User.Image}}" class="img-circle profile-dd-pic"/>
+            &nbsp;{{.User.Name}} &nbsp;<span class="fa fa-chevron-down"></span>
+            </button>
+            <ul class="dropdown-menu profile-dd-dd" role="menu">
+              <!--<li><a href="#" class="fa fa-user">&nbsp;&nbsp;&nbsp;Your Profile </a></li>
+              <li><a href="#" class="fa fa-star-o">&nbsp;&nbsp;&nbsp;Favorites </a></li>
+              <li><a href="#" class="fa fa-wrench">&nbsp;&nbsp;&nbsp;Settings </a></li>-->
+              <li><a href="/logout" class="fa fa-unlock-alt">&nbsp;&nbsp;&nbsp;Logout </a></li>
+            </ul>
+          </div>
+          {{else}}
+            <a href="{{.Login}}" class=""><i class="fa fa-facebook"></i>&nbsp;&nbsp;Login with facebook</a>
+            {{end}}
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+  <div class="container stick">
+  
+    <div class="search-bar">
+      
+     
+      <form class="ghost-btn-group" style="text-align:center" method="GET" action="/search">
+        <a href="#" class="stickimg"><img src="/assets/images/KakuLogosquare.png" style="height:60px"/></a>
+              <div class="location dropdown ll"  >
+                        <input type="text" class="l typeahead"  autocomplete="off" id="l" name="l" placeholder="Location eg ikeja, yaba, vi etc" aria-expanded="true" />
+                      
+                    </div>
+               
+                    <div class="budget">
+                        <input type="text" class="typeahead" id="b" name="b"  placeholder="Budget eg 5000, 2000, etc"/>
+              
+                    </div>
+                    <div class="query">
+                        <input type="text" class="typeahead" id="s" name="s" placeholder="Service eg Hotel, Nightlife, Pizza, Mr. Biggs,  etc"/>
+                    </div>
+         
+            <input class=" searchbtn" type="submit" value="Search">
+ 
+          </form>
+          
+      
+    </div>
+  </div>
+{{end}}
+
+
+{{define "homenav"}}
+
+
+       <nav   style="width:100%;" class="hnav" >
+            <a class="hlogo">
+              <img src="assets/images/KakuLogo.png" />
+            </a>
+            <!--<div align="center">
+                <a href="#home"  class="down-arrow"><i class="fa
+                fa-chevron-down"></i></a>
+            </div>-->
+            
+          <ul>
+            
+          <li ><a class="active h" href="/">Home </a></li>
+          <li ><a class="active h" href="/">About</a></li>
+          <li ><a class="active h" href="/">Blog </a></li>
+          {{ if ne .User.Name ""}}
+          <div class="btn-group head-dropdown">
+            <button type="button" class="btn btn-lg  dropdown-toggle " data-toggle="dropdown">
+            <img src="{{.User.Image}}" class="img-circle profile-dd-pic" style="width:40px;height:40px;"/>
+            &nbsp;{{.User.Name}} &nbsp;<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu profile-dd-dd" role="menu">
+              <!--<li><a href="#" class="fa fa-user">&nbsp;&nbsp;&nbsp;Your Profile </a></li>
+              <li><a href="#" class="fa fa-star-o">&nbsp;&nbsp;&nbsp;Favorites </a></li>
+              <li><a href="#" class="fa fa-wrench">&nbsp;&nbsp;&nbsp;Settings </a></li>-->
+              <li><a href="/logout" class="fa fa-unlock-alt">&nbsp;&nbsp;&nbsp;Logout </a></li>
+            </ul>
+          </div>
+          {{else}}
+          
+            <li ><a class="btn btn-info h" href="{{.Login}}"><i class="fa fa-facebook"></i>&nbsp;Login with facebook</a></li>
+          {{end}}
+            
+                
+            <div style="clear:both"></div>
+          </ul>
+          <div style="clear:both"></div>
+        </nav>
+        
+{{end}}
+
+{{define "foot"}}
+  <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-56222430-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+{{end}}

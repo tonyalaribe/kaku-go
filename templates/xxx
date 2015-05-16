@@ -1,0 +1,25 @@
+<div class="MultiFile-wrap" id="MultiFile1">
+  <input multiple="" type="file" class="multi with-preview MultiFile-applied" maxlength="10" name="undefined" id="MultiFile1" value="" style="position: absolute; top: -3000px;">
+  <input multiple="" type="file" class="multi with-preview MultiFile-applied MultiFile" maxlength="10" name="undefined" id="MultiFile1_F1" value="" style="position: absolute; top: -3000px;">
+  <input multiple="" type="file" class="multi with-preview MultiFile-applied MultiFile" maxlength="10" name="undefined" id="MultiFile1_F2" value="">
+  <div class="MultiFile-list" id="MultiFile1_list">
+    <div class="MultiFile-label">
+      <a class="MultiFile-remove" href="#MultiFile1">x</a>
+      <span>
+        <span class="MultiFile-label" title="File selected: 222.jpg">
+          <span class="MultiFile-title">222.jpg</span>
+          <img class="MultiFile-preview" style="max-height:100px; max-width:100px;" src="datZ">
+        </span>
+      </span>
+    </div>
+    <div class="MultiFile-label">
+      <a class="MultiFile-remove" href="#MultiFile1">x</a>
+      <span>
+        <span class="MultiFile-label" title="File selected: 10953387_938355236177322_7293679985055253490_n.jpg">
+          <span class="MultiFile-title">10953387_938355236177322_7293679985055253490_n.jpg</span>
+          <img class="MultiFile-preview" style="max-height:100px; max-width:100px;" src="d/Z">
+        </span>
+      </span>
+    </div>
+  </div>
+</div>

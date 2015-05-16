@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Hangout on a budget.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kaku.com.ng</title>
+
+    <!-- Add to homescreen -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Fallback to homescreen for Chrome <39 on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="kaku.com.ng">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="kaku.com.ng">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <meta name="theme-color" content="#3372DF">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+    <style type="text/css">
+    .header{
+          background-image:url(assets/images/bg-xs.jpg);
+      }
+    @media all and (min-width:400px){
+      .header{
+          background-image:url(assets/images/bg-lg.jpg);
+      }
+  </style>
+    
+  </head>
+  <body class="search">
+     
+     <div class="search-first-child">
+{{template "homenav" . }}
+    <header class="header">
+        <div style="display:table; height:100%; width:100%;">
+          <div class="" style="display:table-cell;vertical-align:middle;width:100%;text-align:center;">
+            <h1>Looking for Amazing Places to Hangout?<br/><small>You've come to the right place</small></h1>
+            
+            <form class="search-h-parent" action="/search" method="GET">
+                <div class="ghost-btn-group" style="text-align:center">
+                    <div class="location dropdown ll"  >
+                        <input type="text" class="l typeahead"  autocomplete="off" id="l" name="l" placeholder="Location eg ikeja, yaba, vi etc" aria-expanded="true" />
+                      
+                    </div>
+               
+                    <div class="budget">
+                        <input type="text" class="typeahead" id="b" name="b"  placeholder="Budget eg 5000, 2000, etc"/>
+              
+                    </div>
+                    <div class="query">
+                        <input type="text" class="typeahead" id="s" name="s" placeholder="Service eg Hotel, Nightlife, Pizza, Mr. Biggs,  etc"/>
+                    </div>
+      
+                </div><br/><br/>
+                <input class=" searchbtn" type="submit" value="Search">
+          </form>
+          <br/><br/>
+         
+        </div>
+        </div>
+        <br/>
+               <div style="clear:both"></div>
+           
+        
+
+    </header>
+    </div>
+
+    <section class="top-picks container" id="home">
+        <br/><br/><br/>
+        <h2 >Don't want to search? Explore our <strong>Top Picks</strong> <div style="display:none">in
+          <div class="dropdown ll" style="display:none;">
+            <input type="text" class="line-input typeahead"  autocomplete="off" id="l"  aria-expanded="true" value="ikeja"/>
+          </div></div>
+        .</h2>
+        <br/>
+
+        <div class="top-picks-group row">
+            
+            <a href="/search?l=&b=&s=Drinks+and+Nightlife" class="blue-gradient ">
+                <img src="/assets/images/dr.jpg" >
+               <div><span >Drinks and Nightlife</span></div>
+            </a>
+            
+            <a href="/search?l=&b=&s=Ice+Cream+and+Pasteries" class="blue-gradient ">
+                <img src="/assets/images/icp.jpg" >
+               <div><span >Ice Cream and Pasteries</span></div>
+            </a>
+            
+            <a href="/search?l=&b=&s=Restaurants" class="blue-gradient ">
+                <img src="/assets/images/res.jpg" >
+               <div><span >Restaurants</span></div>
+            </a>
+            
+            <a href="/search?l=&b=&s=Entertainment" class="blue-gradient ">
+                <img src="/assets/images/en.jpg" >
+               <div><span >Entertainment</span></div>
+            </a>
+
+            
+        </div>
+    </section>
+
+
+    <section class="featured container" id="home">
+        <br/><br/><br/>
+        <h2 style="text-align:center;">How about our <strong>Featured Places</strong> <div style="display:none">in
+          <div class="dropdown ll" style="display:inline-block;" >
+            <input type="text" class="line-input l typeahead"  autocomplete="off" id="l"  aria-expanded="true" value="alabama"/>
+          </div></div>?</h2>
+        <br/>
+
+        <div class=" row">
+          {{ range .Featured}}
+          <div class="col-md-3 " style="padding-bottom:10px">
+          <div class="card">
+              
+              <div style="padding:0;"  class="flexed-group">
+                {{ range .Images}}
+                <a href="#" data-src="{{.Full}}">
+                    <img src="{{.Thumb}}" class="img-responsive" style="height:100px;border-right:1px solid #fff;"/>
+                </a>
+                {{end}}
+              
+              </div>
+              <div style="min-height:150px">
+               <a href="/place/{{.Slug}}"><h3 >{{.Name}}</h3></a>
+               <p>{{.Address}}</p>
+               <p><strong>Services:</strong> {{range .Service}} {{.}} {{end}}</p>
+               </div>
+                <div>
+                  <img src="/assets/images/x{{.Rating}}.svg">
+                  <span><strong>{{.ReviewsCount}}</strong> reviews</span>&nbsp;
+                  <span><strong>₦{{.Budget}}</strong></span>
+                </div>
+               
+            </div>
+          </div>
+            
+            
+            {{ end }}
+            
+        </div>
+
+    </section>
+
+
+
+
+    <section class="featured container" id="home">
+        <br/><br/><br/>
+        <h2 style="text-align:center;">Or...  <strong>Popular Places</strong> <div style="display:none">in <input type="text" value="ikeja" class="line-input"></div>?</h2>
+        <br/>
+
+        <div class=" row">
+            {{ range .Popular}}
+            <div class="col-md-3 " style="padding-bottom:10px">
+          <div class="card">
+              
+              <div style="padding:0;"  class="flexed-group">
+                {{ range .Images}}
+                <a href="#" data-src="{{.Full}}">
+                    <img src="{{.Thumb}}" class="img-responsive" style="height:100px;border-right:1px solid #fff;"/>
+                </a>
+                {{end}}
+              
+              </div>
+              <div style="min-height:150px">
+               <a href="/place/{{.Slug}}"><h3 >{{.Name}}</h3></a>
+               <p>{{.Address}}</p>
+               <p><strong>Services:</strong> {{range .Service}} {{.}} {{end}}</p>
+               </div>
+                <div>
+                  <img src="/assets/images/x{{.Rating}}.svg">
+                  <span><strong>{{.ReviewsCount}}</strong> reviews</span>&nbsp;
+                  <span><strong>₦{{.Budget}}</strong></span>
+                </div>
+               
+            </div>
+          </div>
+            
+            
+            {{end}}
+        </div>
+
+    </section>
+
+
+    <div style="clear:both"></div>
+    <br/>
+    <footer class="foot " >
+    <div class="container">
+      <div class="footer-nav">
+        <a>About Us</a>
+        <a>Career</a>
+        <a >Blog</a>
+        <a >Privacy Policy</a>
+        <a >Terms and Conditions</a>
+      </div>
+      
+      <div class="footer-links">
+        Quick Links to Areas within Lagos: Alagbado. Amuwo Odofin. Ajegunle. Ajah. Bariga. Lekki Phase 1.
+					    Alimosho 	.
+              Ajeromi-Ifelodun 	.
+             	Kosofe 	.
+             	Mushin .
+             	Oshodi-Isolo .
+             	Ojo 	.
+             	Ikorodu .
+             	Surulere .
+            	Agege 	.
+             	Ifako-Ijaye.
+             	Shomolu .
+             	Amuwo-Odofin .
+             	Lagos Mainland .
+             	Ikeja 	.
+             	Eti-Osa 	.
+             	Badagry .
+             	Apapa 	.
+             	Lagos Island .
+             	Epe 	.
+             	Ibeju-Lekki.
+      </div>
+      <div class="footer-copyright">
+        <small>Copyright (c) 2015, kaku.com.ng. All rights reserved.</small>
+        <br/>
+      </div>
+    </div>
+    </footer>
+    <script src="assets/scripts/main.min.js"></script>
+<script type="text/javascript">
+              //initiating jQuery
+              jQuery(function($) {
+                $(document).ready( function() {
+                  //enabling stickUp on the '.navbar-wrapper' class
+                  
+                  $('.flexed-group').lightGallery({
+                      showThumbByDefault:true,
+                      addClass:'showThumbByDefault'
+                  });
+                  
+                });
+              });
+
+
+
+            
+      </script>
+{{template "foot"}}
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>

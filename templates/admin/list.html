@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AdminLTE 2 | Dashboard</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- FontAwesome 4.3.0 -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons 2.0.0 -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="/dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+    
+    <style type="text/css">
+      
+.sk-spinner-rotating-plane.sk-spinner {
+  width: 50px;
+  height: 50px;
+  background-color: #666;
+  margin: 0 auto;
+  -webkit-animation: sk-rotatePlane 1.5s infinite ease-in-out;
+          animation: sk-rotatePlane 1.5s infinite ease-in-out; }
+
+@-webkit-keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(110px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(110px) rotateX(0deg) rotateY(0deg); }
+
+  50% {
+    -webkit-transform: perspective(110px) rotateX(-180.1deg) rotateY(0deg);
+            transform: perspective(110px) rotateX(-180.1deg) rotateY(0deg); }
+
+  100% {
+    -webkit-transform: perspective(110px) rotateX(-180deg) rotateY(-179.9deg);
+            transform: perspective(110px) rotateX(-180deg) rotateY(-179.9deg); } }
+
+@keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(110px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(110px) rotateX(0deg) rotateY(0deg); }
+
+  50% {
+    -webkit-transform: perspective(110px) rotateX(-180.1deg) rotateY(0deg);
+            transform: perspective(110px) rotateX(-180.1deg) rotateY(0deg); }
+
+  100% {
+    -webkit-transform: perspective(110px) rotateX(-180deg) rotateY(-179.9deg);
+            transform: perspective(110px) rotateX(-180deg) rotateY(-179.9deg); } }
+
+
+    </style>
+    
+    
+  </head>
+  <body class="skin-blue">
+    <div class="wrapper">
+      
+       {{ template "header" .}}
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        
+        {{ template "sidebar" .}}
+        
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            {{.MainTitle}}
+            <small>{{.SubTitle}}</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <!-- Main row -->
+          <div class="row" id="search-view">
+            
+              <div class="search-items col-md-6">
+              </div>
+              <div class="search-items col-md-6">
+              </div>
+              
+            <div style="clear:both"></div>
+            <br/>
+                <!-- some controls -->
+                <div class="btn btn-more"> Load more
+                </div>
+                <div class="state no-more-state">
+                
+                </div>
+                <div class="state load-state">
+                  <div class="sk-spinner sk-spinner-rotating-plane"></div>
+                </div>
+                
+                
+                <script type="text/template" id="cardTemplate">
+  <div class="box">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><a href="/admin/places/edit/<%= Slug %>"><%= Name %></a></h3>
+                  <div class="box-tools pull-right">
+                    <button data-slug="<%= Slug %>"  class="btn btn-box-tool  fa fa-star feature <% if(Featured==1){ %>text-red<% } %>"></button>
+                    <button data-slug="<%= Slug %>" class="btn btn-box-tool fa fa-check approved <% if(Approved==1){ %>text-green<% } %> "></button>
+                    <a href="/admin/places/edit/<%= Slug %>" class="btn btn-box-tool"><i class="fa fa-arrow-right"></i></a>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div><%= Address %><small>,<%= Location %></small><small>,<%= State %></small></div><br/>
+                  
+                  <p><%= Overview%></p>
+                  <div>Services: <% for(var s in Service) { %>
+                     
+                         <span><%= Service[s] %>,</span>
+                     <% } %></div>
+                </div>
+                
+                <div class="box-footer">
+                  <% for(var i in Images) { %>
+                         <img src="<%= Images[i].Thumb %>" class="img-square" style="">
+                         <% if (i === 3) { break; } %>
+                     <% } %>
+                </div>
+                </div>
+</script>
+          </div><!-- /.row (main row) -->
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 2.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://www.kaku.com.ng">Kaku</a>.</strong> All rights reserved.
+      </footer>
+    </div><!-- ./wrapper -->
+
+    <!-- jQuery 2.1.3 -->
+    <script src="/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- jQuery UI 1.11.2 -->
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    
+    <script src="/dist/js/underscore-min.js" type="text/javascript"></script>
+    <script src="/dist/js/backbone.js" type="text/javascript"></script>
+    <script src="/dist/js/scroll-model.js" type="text/javascript"></script>
+    <script src="/dist/js/scroll-view.js" type="text/javascript"></script>
+    <script>
+
+      $(function() {
+              var datum =[
+                  {
+                      "id":"0",
+                      "Name":"KFC restaurant",
+                      "OverallRating":"3",
+                      "Address":"adsf 23 sdfsdf",
+                      "Services":["Restaurant", "Hotel", "Bar"],
+                      "Budget":"5000"
+                  },
+                  
+              ];
+              //configuration
+              var options = {
+                  columnsSelector: ".search-items",
+                  itemTemplateSelector: "#cardTemplate",
+                  itemClasses: "pod",
+                  dataUrl: "{{.URL}}",
+              };
+      
+              //BackboneJs model and Viewer
+              var scrollModel = new ScrollModel({options: options});
+              new ScrollView({el: $("#search-view"), model: scrollModel, options: options});
+              
+              
+              
+          });
+          
+          $(".approved").click(function(){
+                  console.log(this);
+                  $(this).toggleClass( "text-red" );
+                  var slug = $(this).data('slug');
+                  console.log("jhgjk");
+                  console.log(slug);
+              });
+              $(".aas").click(function(){
+                  console.log(this);
+                  $(this).toggleClass( "text-red" );
+                  console.log("Sd")
+              });
+             // document.querySelector('.approved').addEventListener('click', approve );
+              function approvea(){
+                console.log("Called");
+                //console.log(slug);
+                // console.log($(this).text);
+                //$(this).toggleClass( "text-red" );
+                console.log(this.innerHTML);
+                console.log(this.element);
+                console.log(this.classList);
+                this.classList.toggle("text-red");
+                  
+              }
+    </script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+   <!-- AdminLTE App -->
+    <script src="/dist/js/app.min.js" type="text/javascript"></script>
+
+  </body>
+</html>

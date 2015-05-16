@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="">
+  {{ template "head" .}}
+  <body class="search-results">
+    {{template "navandsearch" . }}
+
+    <section class="container" >
+        <br/>
+        
+
+
+     <div class="single">
+
+          <div class="col-md-9 main-left">
+              <div class="heading">
+                  <h1>
+                      <span class="bold-head">{{.Place.Name}}</span>
+
+                  <div class="pull-right">
+                      <small><strong>{{.Place.ReviewsCount}}</strong> reviews</small>
+                      <img src="/assets/images/x{{.Place.Rating}}.svg">
+                    </div>
+                    <div style="clear:both"></div>
+
+                  </h1>
+              </div>
+            
+  
+          
+              <div class="">
+                
+                
+                  <div class="col-md-4 left-side">
+                    <br/>
+                      <div class="bold-head">
+                        <div class="left-s">
+                        <iframe
+                          width="100%"
+                          height="250"
+                          frameborder="0" style="border:0"
+                          src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBfeF873wKriRpOtKT7DEJKedDxdtMvbes&q={{.Place.Address}}"
+                          >
+                        </iframe>
+                        </div>
+                        
+                        <div class="left-s">
+                          <h4>Share</h4>
+                          
+                           <!-- Twitter -->
+                          <a href="http://twitter.com/share?url={{.Here}}&via=kaku_ng" target="_blank" class="share-btn twitter">
+                              <i class="fa fa-twitter"></i>
+                          </a>
+                          
+                          <!-- Google Plus -->
+                          <a href="https://plus.google.com/share?url={{.Here}}" target="_blank" class="share-btn google-plus">
+                              <i class="fa fa-google-plus"></i>
+                          </a>
+                          
+                          <!-- Facebook -->
+                          <a href="http://www.facebook.com/sharer/sharer.php?u={{.Here}}" target="_blank" class="share-btn facebook">
+                              <i class="fa fa-facebook"></i>
+                          </a>
+                        </div>
+                        
+                        
+                        
+                        <div class="left-s">
+                          <h4>Address</h4>
+                          <span>{{.Place.Address}} </span>
+                        </div>
+                        
+                        <div class="left-s">
+                          <h4>Contact</h4>
+                          <span>{{.Place.Phone}}</span>
+                        </div>
+                        
+                        
+                        <div class="left-s">
+                           <h4>Services</h4>
+                          {{range .Place.Service}}
+                           
+                          <span>{{.}}</span>
+                           
+                           {{end}}
+                        </div>
+                        
+                      </div>
+                          <br/>
+                          <br/><br/>
+  
+                  </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                  <div class="col-md-8">
+                    <br/>
+                      <div class="description">
+                        <p>{{.Place.Overview}}</p>
+                      </div>
+                      <div class="photos">
+                          <h3 >Photos</h3>
+                          <div class="photo-group">
+                            {{range .Place.Images}}
+                             <a href="#" data-src="{{.Full}}">
+                                  <img src="{{.Thumb}}" class="img-responsive"/>
+                              </a>
+                            {{end}}
+                           
+                          </div>
+                          
+                          <div style="clear:both"></div>
+                     </div>
+                      
+                     <div class="reviews">
+                         <h3>Reviews</h3>
+                         
+                         <form class="new-review" role="form" method="POST" enctype="multipart/form-data">
+                           <div class="r">
+                             <br/>
+                             <div class="rating-f" >
+                                <select  name="rating" id="rating">
+                                   <option value="1">1</option>
+                                   <option value="2">2</option>
+                                   <option value="3">3</option>
+                                   <option value="4">4</option>
+                                   <option value="5">5</option>
+                                </select>
+                              </div>
+                            </div>
+                            
+                              <br/>
+                              
+                              <textarea rows="6" placeholder="Write a Review" name="description" id="description"></textarea>
+                              <input
+                                  multiple
+                                  type="file"
+                                  class="multi with-preview"
+                                  maxlength="10"
+                                  name="images"
+                                  id="images"
+                                />
+                              <div>
+                                <!--<button class="btn btn-success pull-right">Submit Review</button>-->
+                                {{ if ne .User.Name ""}}
+                                  <input type="submit" class="btn btn-danger pull-right" value="Submit Review">
+                                {{else}}
+                                  <a href="{{.Login}}" class="btn btn-info pull-right"><i class="fa fa-facebook"></i> Login with facebook</a>
+                                {{end}}
+                              </div>
+                              <div style="clear:both"></div>
+                         </form>
+                         
+                         
+                         <br/><br/><br/>
+                         <!--reviews begin here-->
+                         <div>
+                             <div class="review-heading">
+                                 
+                                 <h3 >
+                                     <strong><small>{{.Place.ReviewsCount}}</small> Reviews</strong>
+                                     
+                                     
+                                  <a class=" pull-right btn btn-xs btn-default"
+                                     style="border-bottom:0 solid
+                                     transparent"><small>Date <i class="fa
+                                     fa-arrow-down"></i></small></a>
+                                     
+                                  </h3>
+  
+                                  <div style="clear:both"></div>
+                             </div><!--reviews end here -->
+                              
+                             <!--Comment group begins here-->
+                             
+                             <div class="comment-group"><br/>
+                             {{ range .Reviews}}
+                                 <!--comment instance-->
+                                                     
+                                <div class="comment">
+                                               <div class="well well-sm">
+                                                   <img class="img-circle pull-left" style="width:40px;height:40px;"  src="{{.ProfilePic}}"/>
+                                                   <span style="display:inline-block;
+                                                       padding-left:6px;">
+                                                       <strong>{{.Name}}</strong><br/>
+                                                       <small style="display:none">Rated <strong>{{.Rating}}</strong> &nbsp;&nbsp;7 days
+                                                   ago</small>
+                                                   </span>
+                                                        
+                                                   <div style="clear:both"></div>
+                                        
+                                               </div><!-- well ends here -->
+                                               
+                                               <div class="review-top-row">
+                                                   
+                                                
+                                                   <div style="clear:both;"></div>
+                                               </div>
+                                                
+                                               <div>
+                                                   <p>
+                                                   {{.Review}}
+                                
+                                                   </p>
+                                
+                                               </div>
+                                 <div class="photo-group">
+                            {{ range .Images }}
+                  
+                                <a href="#" data-src="{{.Full}}">
+                                    <img src="{{.Thumb}}" class="img-responsive"/>
+                                </a>
+                              
+                              {{end}}
+                          </div>
+                                
+                                
+                                           </div>
+                                
+                                          <br/>
+                                 <!--comment instance ends here-->
+                                 {{end}}
+                              </div>
+  
+  
+                          </div>
+  
+  
+                     <div style="clear:both"></div>
+                     <br/><br/>
+                  </div>
+                  <div style="clear:both"></div>
+              </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+            <a href="#">
+              <img src="/assets/images/ad.png">
+            </a>
+          </div>
+
+      </div>
+   
+      <div style="clear:both"></div>
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+    <br/>
+    <div class="container">
+      <img src="/assets/images/long-ad.png" class="img-responsive">
+    </div>
+    <div style="clear:both"></div>
+    <br/>
+    <footer class="foot " >
+    <div class="container">
+      <div class="footer-nav">
+        <a>About Us</a>
+        <a>Career</a>
+        <a >Blog</a>
+        <a >Privacy Policy</a>
+        <a >Terms and Conditions</a>
+      </div>
+      
+      <div class="footer-links">
+        Quick Links to Areas within Lagos: Alagbado. Amuwo Odofin. Ajegunle. Ajah. Bariga. Lekki Phase 1.
+					    Alimosho 	.
+              Ajeromi-Ifelodun 	.
+             	Kosofe 	.
+             	Mushin .
+             	Oshodi-Isolo .
+             	Ojo 	.
+             	Ikorodu .
+             	Surulere .
+            	Agege 	.
+             	Ifako-Ijaye.
+             	Shomolu .
+             	Amuwo-Odofin .
+             	Lagos Mainland .
+             	Ikeja 	.
+             	Eti-Osa 	.
+             	Badagry .
+             	Apapa 	.
+             	Lagos Island .
+             	Epe 	.
+             	Ibeju-Lekki.
+      </div>
+      <div class="footer-copyright">
+        <small>Copyright (c) 2015, kaku.com.ng. All rights reserved.</small>
+        <br/>
+      </div>
+    </div>
+    </footer>
+    
+    
+    
+    <script src="/assets/scripts/main.min.js"></script>
+    
+
+
+    <script type="text/javascript">
+              //initiating jQuery
+              jQuery(function($) {
+                $(document).ready( function() {
+                  //enabling stickUp on the '.navbar-wrapper' class
+                  $('.stick').stickUp();
+                  $('.photo-group').lightGallery({
+                      showThumbByDefault:true,
+                      addClass:'showThumbByDefault'
+                  });
+                });
+              });
+
+
+   $(function () {
+
+      $('#rating').barrating();
+
+   });
+
+            
+      </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  {{template "foot"}}
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>

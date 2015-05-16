@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="">
+  {{ template "head" .}}
+  <body class="search-results">
+    
+    <div class="main-nav ">
+      <div class="container">
+        <img src="assets/images/KakuLogo.png" />
+        <div style="display:inline-block;" class="pull-right">
+          <a>Home </a>
+          <a>About</a>
+          <a>Blog </a>
+          <div class="btn-group head-dropdown">
+            <button type="button" class="btn  dropdown-toggle " data-toggle="dropdown">
+            <img src="assets/images/Tulips.jpg" class="img-circle profile-dd-pic"/>
+            &nbsp;Anthony Alaribe &nbsp;<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu profile-dd-dd" role="menu">
+              <li><a href="#" class="fa fa-user">&nbsp;&nbsp;&nbsp;Your Profile </a></li>
+              <li><a href="#" class="fa fa-star-o">&nbsp;&nbsp;&nbsp;Favorites </a></li>
+              <li><a href="#" class="fa fa-wrench">&nbsp;&nbsp;&nbsp;Settings </a></li>
+              <li><a href="#" class="fa fa-unlock-alt">&nbsp;&nbsp;&nbsp;Logout </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+  <div class="container stick">
+  
+    <div class="search-bar">
+      
+     
+      <form class="ghost-btn-group" style="text-align:center">
+        <a href="#" class="stickimg"><img src="assets/images/KakuLogosquare.png" style="height:60px"/></a>
+               <div class="location dropdown ll"  >
+                        <input type="text" class="l typeahead"  autocomplete="off" id="l" placeholder="Location eg ikeja, yaba, vi etc" aria-expanded="true" />
+                      
+                    </div>
+              <div class="budget">
+                  <span class=""><i class="fa fa-map-marker"></i></span>
+                  <input type="text" class=""  placeholder="Budget eg 5000, 2000, etc"/>
+        
+              </div>
+              <div class="query">
+                  <input type="text" class="typeahead" placeholder="Service eg Hotel, Nightlife, Pizza, Mr. Biggs,  etc"/>
+              </div>
+         
+            <input class=" searchbtn" type="submit" value="Search">
+ 
+          </form>
+          
+      
+    </div>
+  </div>
+
+
+    <section class="container" >
+        <br/>
+        
+
+
+     <div class="single">
+
+          <div class="col-md-9 main-left">
+              <div class="heading">
+                  <h1>
+                      <span class="bold-head">Suggest a Place</span>
+
+                    <div style="clear:both"></div>
+
+                  </h1>
+              </div>
+            
+  
+          
+              <div class="">
+              
+                <br/>
+              <form class="" role="form" enctype="multipart/form-data" method="post" action="/submitplace" ng-controller="NewplaceCtrl">
+              
+                  <div class="form-group col-md-12">
+                      <label for="name" class="sr-only"> Name </label>
+                    <input type="TEXT" class="form-control "
+                                       placeholder="Name"  id="name"
+                                                                     name="name"/>
+                </div>
+                <div class="form-group col-md-4 ll">
+                    <label for="location" class="sr-only"> Location </label>
+                    <input type="TEXT" class="form-control typeahead"
+                                       placeholder="Location. ex 'city, state' "
+                                       id="location" name="location" />
+                </div>
+                <div class="form-group col-md-4 query">
+                    <label for="service" class="sr-only"> Service </label>
+                    <input type="TEXT" class="form-control typeahead"
+                                       placeholder="Services. ex 'Bar,Restaurant,Diner' " id="service"
+                                                                name="service"
+                                                                />
+                </div>
+                <div class="form-group col-md-4 budget">
+                    <label class="sr-only" for="budget">Optimal Budget</label>
+                    <input type="TEXT" class="form-control typeahead "
+                                       placeholder="Optimal Budget ex 5000"
+                                       id="budget" name="budget" />
+                </div>
+      
+            
+                <div class="">
+                   <div class="form-group col-md-12">
+                    <label for="images" class="" align="center">Images of the
+                        Place  </label>
+                    <br/>
+                    <input
+                                  multiple
+                                  type="file"
+                                  class="multi with-preview"
+                                  maxlength="10"
+                                />
+                    </div>
+    
+                    <div class="form-group col-md-12">
+                        <label for="overview" class="sr-only">Overview</label>
+                        <textarea id="overview" name="overview" class="form-control nobr "
+                                                placeholder="Overview" rows="8"
+                                                                      ></textarea>
+                    </div>
+    
+                    <div class="form-group col-md-4">
+                        <label for="address" class="sr-only">Address</label>
+                        <input type="TEXT" id="address" name="address"
+                        class="form-control " placeholder="Address. ex '123 ABC Road' "/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="phone" class="sr-only">Phone No. </label>
+                        <input type="TEXT" id="phone" name="phone"
+                        class="form-control " placeholder="Phone No. ex 08012345678"
+                                              />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="working-hours" class="sr-only">Working Hours</label>
+                        <input type="TEXT" placeholder="Working Hours. ex 'Mon-Fri:6am-9pm'" id="working-hours" name="working-hours" class="form-control"  />
+                    </div>
+  
+                  
+                    
+                  <button class="btn  btn-lg btn-info blue-btn" type="submit">Submit</button>
+                  
+                  
+                </div>
+
+                </form>
+                
+                <div style="clear:both;"></div>
+
+              </div>
+          </div>
+          <div class="col-md-3">
+            <a href="#">
+              <img src="/assets/images/ad.png">
+            </a>
+          </div>
+
+      </div>
+   
+      <div style="clear:both"></div>
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+    <br/>
+    <div class="container">
+      <img src="/assets/images/long-ad.png" class="img-responsive">
+    </div>
+    <div style="clear:both"></div>
+    <br/>
+    <footer class="foot " >
+    <div class="container">
+      <div class="footer-nav">
+        <a>About Us</a>
+        <a>Career</a>
+        <a >Blog</a>
+        <a >Privacy Policy</a>
+        <a >Terms and Conditions</a>
+      </div>
+      
+      <div class="footer-links">
+        Quick Links to Areas within Lagos: Alagbado. Amuwo Odofin. Ajegunle. Ajah. Bariga. Lekki Phase 1.
+					    Alimosho 	.
+              Ajeromi-Ifelodun 	.
+             	Kosofe 	.
+             	Mushin .
+             	Oshodi-Isolo .
+             	Ojo 	.
+             	Ikorodu .
+             	Surulere .
+            	Agege 	.
+             	Ifako-Ijaye.
+             	Shomolu .
+             	Amuwo-Odofin .
+             	Lagos Mainland .
+             	Ikeja 	.
+             	Eti-Osa 	.
+             	Badagry .
+             	Apapa 	.
+             	Lagos Island .
+             	Epe 	.
+             	Ibeju-Lekki.
+      </div>
+      <div class="footer-copyright">
+        <small>Copyright (c) 2015, kaku.com.ng. All rights reserved.</small>
+        <br/>
+      </div>
+    </div>
+    </footer>
+    
+    
+    
+    <script src="assets/scripts/main.min.js"></script>
+    
+
+
+    <script type="text/javascript">
+              //initiating jQuery
+              jQuery(function($) {
+                $(document).ready( function() {
+                  //enabling stickUp on the '.navbar-wrapper' class
+                  $('.stick').stickUp();
+                });
+              });
+
+
+   $(function () {
+
+      $('#overallrating').barrating();
+
+   });
+
+            
+      </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+   {{template "foot"}}
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>
