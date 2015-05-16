@@ -75,6 +75,8 @@
 
     <meta name="theme-color" content="#3372DF">
 
+<meta property="fb:app_id" content="986275294733187" />
+
   <!-- Twitter Card data -->
 <meta name="twitter:card" content="product"/>
 <meta name="twitter:site" content="@kaku_ng"/>
@@ -82,18 +84,18 @@
 <meta name="twitter:description" content="{{.Place.Overview}}"/>
 <meta name="twitter:creator" content="@tonialaribe"/>
   {{ range .Place.Images }}
-          <meta name="twitter:image" content="{{.}}"/>
+          <meta name="twitter:image" content="{{.Full}}"/>
   {{end}}
 
 
   <meta property="og:title" content="{{.Place.Name}}" />
   <meta property="og:type" content="place" />
-  <meta property="og:url" content="http://kaku-go.herokuapp.com{{.Here}}" />
-  <meta property="og:site_name" content="kaku" />
+  <meta property="og:url" content="{{.Here}}" />
+  <meta property="og:site_name" content="Kaku.com.ng" />
   {{ range .Place.Images }}
           
 
-    <meta property="og:image" content="{{.}}" />
+    <meta property="og:image" content="{{.Full}}" />
   {{end}}
 
 
