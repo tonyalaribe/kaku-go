@@ -51,7 +51,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="description" content="{{.Place.Overview}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{.Place.Name}} || kaku.com.ng</title>
 
@@ -66,7 +66,7 @@
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <meta name="apple-mobile-web-app-title" content="kaku">
     <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
@@ -88,7 +88,7 @@
 
   <meta property="og:title" content="{{.Place.Name}}" />
   <meta property="og:type" content="place" />
-  <meta property="og:url" content="http://kaku-go.herokuapp.com{{.URL}}" />
+  <meta property="og:url" content="http://kaku-go.herokuapp.com{{.Here}}" />
   <meta property="og:site_name" content="kaku" />
   {{ range .Place.Images }}
           
