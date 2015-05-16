@@ -7,7 +7,7 @@ import (
 
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gorilla/context"
-		"github.com/mitchellh/mapstructure"
+	"github.com/mitchellh/mapstructure"
 )
 
 //Middlewares
@@ -77,23 +77,23 @@ func (ac *appContext) adminAuthHandler(next http.Handler) http.Handler {
 			//w.Header().Set("Content-Type", "text/html")
 			//w.WriteHeader(http.StatusOK)
 			//fmt.Fprintln(w, "restricted Area")
-      u := token.Claims["User"]
-      var user User
-    	err := mapstructure.Decode(u, &user)
-    	if err != nil {
-    		log.Println(err)
-    	}
-    	
-    	log.Println(user)
-    	log.Println(user.Permission)
-    	log.Println("*************************************************************************")
-      if user.Permission == "admin"{
-  			context.Set(r, "User", u)
-  			log.Println(u)
-  			next.ServeHTTP(w, r)
-      }else{
-        http.Redirect(w, r, "/loginform", http.StatusFound)
-      }
+			u := token.Claims["User"]
+			var user User
+			err := mapstructure.Decode(u, &user)
+			if err != nil {
+				log.Println(err)
+			}
+
+			log.Println(user)
+			log.Println(user.Permission)
+			log.Println("*************************************************************************")
+			if user.Permission == "admin" {
+				context.Set(r, "User", u)
+				log.Println(u)
+				next.ServeHTTP(w, r)
+			} else {
+				http.Redirect(w, r, "/loginform", http.StatusFound)
+			}
 		case *jwt.ValidationError: // something was wrong during the validation
 			vErr := err.(*jwt.ValidationError)
 
@@ -114,16 +114,14 @@ func (ac *appContext) adminAuthHandler(next http.Handler) http.Handler {
 
 }
 
-
-
 func (ac *appContext) frontAuthHandler(next http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
 
 		// check if we have a cookie with out tokenName
 
 		tokenCookie, err := r.Cookie(ac.token)
-		if err !=nil{
-		  log.Println(err)
+		if err != nil {
+			log.Println(err)
 		}
 		//log.Println(ac.token)
 		//log.Println(tokenCookie)

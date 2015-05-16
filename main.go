@@ -179,7 +179,7 @@ func main() {
 	}
 
 	//appC.xmain()
-	cH := alice.New(context.ClearHandler, loggingHandler)
+	cH := alice.New(context.ClearHandler, loggingHandler, recoverHandler)
 
 	//serve assets
 	fs := http.FileServer(http.Dir("templates/assets/"))
