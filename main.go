@@ -121,14 +121,11 @@ func checks() (REDISADDR, MONGOSERVER, MONGODB string, Public []byte, Private []
 	return
 }
 
-
 func serveSingle(pattern string, filename string) {
 	http.HandleFunc(pattern, func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, filename)
 	})
 }
-
-
 
 func init() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
@@ -156,7 +153,7 @@ func main() {
 
 	rediscli := redis.NewClient(&redis.Options{
 		Addr:    REDISADDR,
-		Network: "tcp",
+		Network: "redis",
 	})
 	pong, err := rediscli.Ping().Result()
 	log.Println(pong, err)
@@ -220,7 +217,7 @@ func main() {
 	http.Handle("/search", cH.Append(appC.frontAuthHandler).ThenFunc(appC.searchResultPage))
 	http.Handle("/", cH.Append(appC.frontAuthHandler).ThenFunc(appC.indexHandler))
 
-  serveSingle("/favicon.ico", "./favicon.ico")
+	serveSingle("/favicon.ico", "./favicon.ico")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
