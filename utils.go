@@ -66,7 +66,7 @@ func (c *appContext) uploadPic(a *multipart.FileHeader) (string, string) {
 		log.Println(err.Error())
 	}
 
-	m := resize.Resize(100, 100, img, resize.Lanczos2)
+	m := resize.Resize(200, 200, img, resize.Lanczos2)
 
 	buf2 := new(bytes.Buffer)
 	err = jpeg.Encode(buf2, m, nil)
