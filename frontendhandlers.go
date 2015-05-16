@@ -267,7 +267,7 @@ func (c *appContext) SearchJSON(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 	page := 1
-	perPage := 10
+	perPage := 12
 	r.ParseForm()
 
 	log.Println(len(strings.Join(r.Form["page"], "")))
