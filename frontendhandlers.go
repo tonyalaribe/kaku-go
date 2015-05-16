@@ -291,8 +291,8 @@ func (c *appContext) SearchJSON(w http.ResponseWriter, r *http.Request) {
 	if strings.Join(r.Form["f"], "") == "true" {
 		featured = true
 	}
-
-	Results, err := c.SearchResult(location, budget, query, unapproved, featured, page, perPage)
+	loc := strings.Split(location, ",")
+	Results, err := c.SearchResult(loc[0], budget, query, unapproved, featured, page, perPage)
 	if err != nil {
 		log.Println(err)
 	}
